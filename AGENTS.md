@@ -14,6 +14,7 @@ Correr `npm test` antes de cada commit.
 ## Estructura
 
 - `scripts/serve.mjs`: servidor local sin dependencias con watch
+- `scripts/preview.mjs`: `npm run preview [start|stop|status]` levanta `serve.mjs` en background y abre el navegador; sin argumento alterna. Skill `/site-preview` (`.claude/skills/`)
 - `scripts/build.mjs`: generador. Lee `proyectos/`, renderiza HTML con template literals y copia media a `dist/`
 - `src/styles.css`: todos los estilos (CSS plano, sin Tailwind ni build)
 - `src/lightbox.js`: único JS del cliente (`<dialog>` para las fotos)
