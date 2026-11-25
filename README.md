@@ -60,7 +60,7 @@ npm install
 npm run dev
 ```
 
-Build en `dist/` (`npm run build`). Estilos en `src/styles.css`, grupos en `src/groups.json`.
+Abre http://localhost:4321 y regenera al guardar cambios. Build en `dist/` (`npm run build`). Estilos en `src/styles.css`, grupos en `src/groups.json`.
 
 ## Deploy
 

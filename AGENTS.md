@@ -7,12 +7,14 @@ Sitio estático con los proyectos del año de Flexible (laboratorio de arte, cie
 - `npm ci`: instala (`marked`, `yaml`; no hay más dependencias)
 - `npm run build`: genera `dist/`
 - `npm test`: build + validaciones (páginas generadas, links/src locales existentes, sin `undefined` en el HTML)
-- `npm run dev`: build + servidor local
+- `npm run dev`: build + servidor en http://localhost:4321 (rebuild al guardar; `PORT` para cambiarlo). `.claude/launch.json` lo expone a la preview de Claude Code
 
 Correr `npm test` antes de cada commit.
 
 ## Estructura
 
+- `scripts/serve.mjs`: servidor local sin dependencias con watch
+- `scripts/preview.mjs`: `npm run preview [start|stop|status]` levanta `serve.mjs` en background y abre el navegador; sin argumento alterna. Skill `/site-preview` (`.claude/skills/`)
 - `scripts/build.mjs`: generador. Lee `proyectos/`, renderiza HTML con template literals y copia media a `dist/`
 - `src/styles.css`: todos los estilos (CSS plano, sin Tailwind ni build)
 - `src/lightbox.js`: único JS del cliente (`<dialog>` para las fotos)

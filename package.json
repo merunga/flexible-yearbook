@@ -4,8 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "dev": "npm run build && npx -y serve dist",
-    "test": "node --test"
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test",
+    "preview": "node scripts/preview.mjs"
   },
   "dependencies": {
     "marked": "^15.0.12",
