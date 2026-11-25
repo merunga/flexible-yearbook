@@ -1,24 +1,67 @@
 # Flexible Yearbook
 
-hola. quisierta crear un sitio web, navegable, e donde pueda subir todo el trabajo producido del año. Te pongo en contexto. Soy la directora de "Flexible" / www.flexiblelab.com.ar / @flexiblelaboratorio en instagram / un laboratorio de arte, ciencia, juego y tecnologia para infancias. Quiero generar una web para cargar todos los proyectos que se realizaron este año y que las familias pueda ingresar a verlos. omo podemos comenzar? que necesitas? tengo los archivos en un disco externo y te puedo pasar ese acceso
+Sitio estático de proyectos del año de Flexible. Se publica en GitHub Pages con cada push a `main`.
 
-This project was built with [Lovable](https://lovable.dev).
+## Cargar un proyecto
 
-## Build with Lovable
+Una carpeta por proyecto dentro del grupo (`proyectos/5-6`, `proyectos/7-9` o `proyectos/9-13`):
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/12e2583e-f20e-5590-b1ee-ecf2b85cce0a).
+```
+proyectos/7-9/01-robots-de-carton/
+  proyecto.md
+  portada.jpg
+  foto-1.jpg
+  video.mp4
+```
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Fotos (`jpg png webp gif avif`) y videos (`mp4 webm mov m4v`) de la carpeta forman la galería, en orden alfabético.
 
-## Development
+### `proyecto.md`
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+```md
+---
+titulo: Robots de cartón
+descripcion: Texto corto para la tarjeta (si falta, se usa el primer párrafo)
+fecha: Junio 2026
+orden: 1                  # orden dentro del grupo (si falta, nombre de carpeta)
+portada: portada.jpg      # si falta: portada.* o la primera imagen
+galeria: [foto-2.jpg, foto-1.jpg]   # opcional: orden/selección manual
+links:
+  - titulo: Instructivo
+    url: https://...
+embeds:
+  - https://www.youtube.com/watch?v=...
+---
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+Texto libre en **markdown**. Imágenes de la carpeta: ![](foto-1.jpg)
+
+Una URL sola en su línea se convierte en embed:
+
+https://vimeo.com/76979871
+```
+
+Embeds soportados: YouTube, Vimeo, Google Drive (archivo), Spotify, Scratch. Otras URLs quedan como link.
+
+## Imágenes y videos
+
+- Imágenes: máx. ~2000px de lado y JPG/WebP (no se procesan en el build).
+- Videos: van por Git LFS (`git lfs install` una vez). Límites de GitHub: 100 MB por archivo, ~1 GB el sitio publicado. Comprimir antes:
+
+```bash
+ffmpeg -i in.mov -vf "scale=-2:720" -c:v libx264 -crf 26 -preset slow -c:a aac -b:a 96k -movflags +faststart out.mp4
+```
+
+- Videos largos o muchos: mejor subirlos a YouTube/Vimeo (no listado) y usar `embeds`.
+
+## Desarrollo
+
+```bash
+npm install
 npm run dev
 ```
+
+Build en `dist/` (`npm run build`). Estilos en `src/styles.css`, grupos en `src/groups.json`.
+
+## Deploy
+
+Settings → Pages → Source: **GitHub Actions**. El workflow `.github/workflows/pages.yml` corre en cada push a `main`.
