@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Families unlock the site with a shared password checked in a server function (encrypted session cookie); all family-facing data comes from gated server functions in `src/lib/gate.functions.ts` that sign private storage URLs. Why: media must never be reachable without the password.
+- Staff manage content at `/admin` with Cloud email/password accounts; public sign-up is disabled, so any signed-in user is staff. Why: only the team uploads.
+- Age groups are a fixed list in `src/lib/groups.ts`. Why: groups rarely change and need no table.

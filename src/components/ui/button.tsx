@@ -16,6 +16,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        block:
+          "rounded-full border-2 border-ink bg-primary text-primary-foreground font-semibold shadow-[var(--shadow-block-sm)] hover:-translate-x-px hover:-translate-y-px active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all",
+        blockLight:
+          "rounded-full border-2 border-ink bg-card text-foreground font-semibold shadow-[var(--shadow-block-sm)] hover:bg-secondary active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all",
       },
       size: {
         default: "h-9 px-4 py-2",
