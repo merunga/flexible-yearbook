@@ -85,7 +85,7 @@ main.container { padding-bottom: 5rem; }
 }
 .row .pill { box-shadow: none; }
 .badge { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.25rem; }
-.back { display: inline-block; font-size: 0.875rem; font-weight: 700; text-underline-offset: 4px; }
+.back { display: block; width: fit-content; font-size: 0.875rem; font-weight: 700; text-underline-offset: 4px; }
 .back:hover { text-decoration: underline; }
 
 .prose { margin-top: 1rem; max-width: 42rem; font-size: 1.125rem; color: var(--muted-fg); }
